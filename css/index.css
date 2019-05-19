@@ -1,0 +1,1055 @@
+/* CSS Variables */
+:root {
+	--primary: #ddd;
+	--dark: #333;
+	--light: #fff;
+	--shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+}
+
+/********** GENERAL SETTINGS **********/
+
+* 	{
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-font-smoothing:antialiased;
+	-moz-font-smoothing:antialiased;
+	-o-font-smoothing:antialiased;
+	font-smoothing:antialiased;
+	text-rendering:optimizeLegibility; 
+}
+
+html {
+	scroll-behavior: smooth;
+	font-family: Arial, Helvetica, sans-serif;
+	}
+
+body {
+	background: white;
+	line-height: 1.6;
+	}
+
+h2	{
+	text-align: center;
+	color: gray; /* rgba(0,0,0,0.84); */
+	letter-spacing: 3px;
+	font-weight: normal;
+	}
+	
+h3 	{
+	text-align: center;
+	font-size: 20px;
+	color: rgba(0,0,0,0.7);
+	letter-spacing: 2px;
+	font-weight: normal;
+	}
+	
+p 	{font-size: 16px;
+	text-align: left;
+	color: gray; /* rgba(0,0,0,.84); */
+	}
+
+/********** PAGE AREA SETTINGS **********/
+/* Page Area Definition */
+.menu-container 	{ grid-area: n; }
+.header-container 	{ grid-area: h; }
+.home-container		{ grid-area: a; }
+.store-container	{ grid-area: s; }
+.gallery-container	{ grid-area: g; }
+.glossary-container	{ grid-area: o; }
+.blog-container		{ grid-area: b; }
+.contact-container	{ grid-area: c; }
+.footer-container	{ grid-area: f; }
+
+/* Page Area Assignment */
+.page-container {
+	display: grid;
+	grid-template-areas:
+		'n n n n n n n n n n n n'
+		'h h h h h h h h h h h h'
+		'a a a a a a a a a a a a'
+		's s s s s s s s s s s s'
+		'g g g g g g g g g g g g'
+		'o o o o o o o o o o o o'
+		'b b b b b b b b b b b b'
+		'c c c c c c c c c c c c'
+		'f f f f f f f f f f f f';
+	grid-template-rows: auto auto auto
+						auto auto auto
+						auto auto auto;
+	grid-gap: 10px;	/* temporary */
+	}
+	
+.containers {
+	margin-left: 15%;
+	margin-right: 15%;
+	margin-bottom: 50px;
+	}	
+
+/* https://www.caktusgroup.com/blog/2017/10/23/css-tip-fixed-headers-and-section-anchors/ */	
+
+/* exception to this is the id="home-anchor" which adjusts the
+   empty space between the header and the hero image (with a
+   margin-bottom of 0px;) */
+.anchor {
+	position: relative;
+	height:auto;	
+	margin-bottom: 70px;
+	}	
+
+.anchor a {
+	position: absolute;
+	left: 0px;
+	top: -65px;
+	}
+	
+.section-label {
+	margin-bottom: 0px;
+	}
+/*	
+.anchor .section-label {
+	position: absolute;
+	left: 0px;
+	/* anchor offset + header height + header padding + header margins 
+	top: 0px;
+	margin: 0;
+	}
+*/
+
+#go-to-top-btn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 50px; /* Place the button at the bottom of the page */
+    right: 10px; /* Place the button 30px from the right */
+    z-index: 9999; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: transparent; /* Set a background color */
+	filter: opacity(65%);
+    color: black; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+	/*Make the button taller than wider */
+	padding-top: 5px; /* Some padding */
+	padding-bottom: 5px; /* Some padding */
+    padding-left: 20px; /* Image is rotated! */
+	padding-right: 20px; /* Image is rotated! */
+    border-radius: 0px; /* Rounded corners */
+	font-size: 25px;
+	font-weight: 900;
+	-ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+    transform: rotate(90deg);
+}
+
+#go-to-top-btn:hover {
+	color: white;
+    background-color: #555; /* Add a dark-grey background on hover */
+}
+/************************* MENU AREA SETTINGS *************************/
+
+.menu-container {
+	display: grid;
+	grid-template-columns: 1fr;
+	height: 56px;
+	/* if this didn't exist, a weird line appears between
+	CHRYSSA and the sign */
+	font-size: 0px;
+	background-color: yellow;	
+	}
+
+.menu {
+	display: grid;
+	grid-template-columns: 1fr;
+	height: 56px;
+
+	}
+
+.menu-items {
+	display: flex;
+	position: fixed;
+	list-style-type: none;
+	height: 55px;
+	width: 100%;
+	background-color: black;
+	z-index: 2000;
+	-webkit-box-shadow: -8px 7px 75px 9px rgba(191,32,32,1);
+	-moz-box-shadow: -8px 7px 75px 9px rgba(191,32,32,1);
+	box-shadow: 0px 5px 15px 5px rgba(0,0,0,0.8);
+	}
+
+.menu-item {
+	display: flex;
+	height: 50px;
+	/* center vertically the nav-links inside their container */
+	padding-top: 0px;
+	padding-bottom: 0px;
+	background-color: black;
+	}
+
+/* logo in the middle on small screens */
+#logo-item {
+	display: none;	
+	position: absolute;
+	height: 50px;
+	left: 0px;
+	padding-left: 5px;
+/* 	this is different for big screens
+	and also different for expanded menu */
+	margin-top: 5px;
+	background-color: black;
+	}
+
+/* smaller size on small screens */
+#name {
+	height: 24px;
+	margin-top: 12px;
+	margin-bottom: 0px;
+	margin-right: 5px;
+	}
+
+/* smaller size on small screens */
+#sign {
+	height: 24px;
+	margin-top: 2px;
+	margin-bottom: 8px;
+	}
+
+.nav-link {
+	position: absolute;
+	-ms-transform: translate(-75%, 0);
+	-webkit-transform: translate(-75%, 0);
+	transform: translate(-75%, 0);
+	left: 75%;
+	width: 80px;
+	color: white;
+	text-align: right;
+	padding: 14px 0px;
+	text-decoration: none;
+	font-size: 14px;
+	}
+
+	/* show only the active link */
+.nav-link:not(.active) {
+	display: none;
+	}
+
+.nav-link:hover {
+	background-color: black;
+	color: white;
+	}
+
+.active {
+	background: black;
+	}
+
+.hamburger-container {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0px;
+	height: 51px;
+	padding: 18px 10px;
+	text-decoration: none;
+	cursor: pointer;
+	background-color: ;
+	}
+	
+.hamburger-container:hover {
+	
+	}	
+	
+.bar1, .bar2, .bar3 {
+  width: 20px;
+  height: 3px;
+  padding: 0px;
+  background-color: white;
+  margin-bottom: 3px;
+  transition: 0s;
+}
+
+.change .bar1 {
+	-webkit-transform: rotate(-45deg) translate(-10px, 7px);
+	transform: rotate(-45deg) translate(-4.5px, 6px);
+}
+
+.change .bar2 {
+	opacity: 0;
+	}
+
+.change .bar3 {
+	-webkit-transform: rotate(45deg) translate(-2px, 0px);
+	transform: rotate(45deg) translate(-3px, -4px);
+}
+
+
+/*  The "expanded" class is added to the menu-items class
+    with JavaScript when the user clicks on the menu icon.
+	This renders all menu links visible and vertical. When
+	the menu opens, clicking on a link removes this class */
+
+
+.menu-items.expanded #logo-item {
+	display: block;
+	position: relative;
+	height: 50px;
+	padding-top: 5px;
+	padding-left: 0px;
+    text-align: center;
+	margin-top: 0;
+	margin-bottom: 0;
+	background-color: black;
+}
+
+.menu-items.expanded #name {
+	height: 24px;
+	margin-top: 12px;
+	margin-bottom: 0px;
+	margin-right: 5px;
+	}
+
+/* smaller size on small screens */
+.menu-items.expanded #sign {
+	height: 24px;
+	margin-top: 2px;
+	margin-bottom: 8px;
+}
+
+/* 	this excludes the hamburger icon from aligning left
+	because it doesn't have the nav-link class -
+	each item occupies a line! */
+.menu-items.expanded .nav-link {
+	position: relative;
+	-ms-transform: translate(0%, 0);
+	-webkit-transform: translate(0%, 0);
+	transform: translate(0%, 0);javascript:void(0);
+	left: 0%;
+	padding-left: 10px;
+    float: none;
+    display: block;
+	width: 100%;
+	height: 50px;
+    text-align: left;
+	/* color of the letters only - not background! */
+	color: rgba(100, 100, 100, 1.0);
+	border-top: solid 1px rgba(50, 50, 50, 1.0);
+	/*if this didn't exist, the menu would be transparent! */
+	background-color: rgba(20, 20, 20, 1.0);
+	}      
+
+.menu-items.expanded .nav-link:hover {
+	background-color: rgba(50, 50, 50, 1.0);
+	}  
+
+.menu-items.expanded .nav-link.active {
+	color: white;
+	background-color: black;
+	}
+	
+	
+/****************** WORKING ON THIS NOW *****************/	
+
+/* is the next line relevant? */	
+
+
+.menu-items.expanded {
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 301.5px;
+	width: 100%;
+	background-color: rgba(20, 20, 20, 1.0);
+	}
+
+.menu-items.expanded .menu-item {
+	/*this adjusts the height of each visual stripe in the menu*/
+	height: 50px;
+	}
+	
+.menu-items.expanded #ego {
+	display: block;
+	height: 51px;
+	/*not responding*/
+	border-bottom: solid 1px rgba(50, 50, 50, 1.0);
+	background-color: yellow;
+	}
+	
+/*****************************************************************/
+	
+.social-media-container {
+	display: flex;
+	position: fixed;
+	bottom: 50px;
+	left: 10px;
+	/* positioned a little closer to the viewer than the menu bar */
+	}
+	
+.social-media-icons {
+	display: box;
+	list-style: none;
+	padding-top: 0px;
+	}
+
+.fa {
+	padding: 10px;
+	font-size: 25px;
+	height: 45px;
+	width: 45px;
+	text-align: center;
+	text-decoration: none;
+	margin: 5px 0px;
+	}
+
+.fa:hover {
+    filter: opacity(100%);
+	}
+
+.fa-facebook {
+	background: transparent;
+	color: black;
+	margin-left: 10px;
+	filter: opacity(70%);
+	}
+	
+.fa-facebook:hover {
+	background: #3B5998;
+	color: white;
+	filter: opacity(100%);
+	}
+
+.fa-twitter {
+	background: transparent;
+	color: black;
+	margin-left: 10px;
+	filter: opacity(70%);
+	}
+
+.fa-twitter:hover {
+	background: #1DA1F2;
+	color: white;
+	filter: opacity(100%);
+	}
+	
+.fa-instagram {
+	background: transparent;
+	color: black;
+	margin-left: 10px;
+	filter: opacity(70%);
+	}
+
+.fa-instagram:hover {
+	background:   background: #f09433; 
+	background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+	background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+	background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+	color: white;
+	filter: opacity(100%);
+	}
+	
+
+/************************* LOGO AREA SETTINGS *************************/
+
+.header-container {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: row;
+	flex-direction: row;
+	-webkit-justify-content: space-around;
+	justify-content: space-around;
+	width: 100%;
+	height: auto;
+	/* to offset the height of the menu bar */
+	margin-top: 0px;
+	background-color: white;
+	z-index: 500;
+	}
+
+.logo-name-container {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-flow: row nowrap;
+	flex-flow: row nowrap;
+	-webkit-align-items: center;
+	align-items: center;
+	width: 60%;
+	height: auto;
+	background-color: transparent;
+	}
+
+.logo-name-container img {
+	width: 100%;
+	height: auto;
+	}
+
+.logo-sign-container {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-flow: row nowrap;
+	flex-flow: row nowrap;
+	-webkit-align-items: center;
+	align-items: center;
+	width: 20%;
+	height: auto;
+	background-color: transparent;
+	}
+
+.logo-sign-container img {
+	width: 80%;
+	height: auto;
+	}
+
+/******************** HOME AREA SETTINGS ***********************/	
+
+.home-container {
+	margin-left: 0%;
+	margin-right: 0%;
+	background-color: white;
+	}
+
+.hero-image {
+	background-image: url("../img/DSC00106.JPG");
+	background-color: #cccccc;/*;*/
+	height: 500px;
+	width: auto;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	margin-bottom: 50px;
+	}
+
+.hero-text {
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+	/* background black with 50% opacity */
+	background: rgba(0, 0, 0, 0.5); 
+	}
+
+.hero-text h3 {
+	color: white;
+}
+	
+.row {
+	margin-left: 15%;
+	margin-right: 15%;
+	}
+	
+.home-photo {
+	width: 100vw;
+	overflow-x: hidden;
+	overflow-y: auto;
+	}
+
+/* Display the "Meet the Team" columns one over the other
+   instead of one next to the other on big screens */
+.column {
+    width: 100%;
+    display: block;
+	}	
+
+/* Some left and right padding inside the container */
+.container {
+	padding: 0 16px;
+	}
+
+/* Clear floats */
+.container::after, .row::after {
+	content: "";
+	clear: both;
+	display: table;
+	}
+
+.card .title {
+	text-align: center;
+	}
+	
+.card h3 {
+	margin-top: 20px;
+	margin-bottom: 30px;
+	}
+
+.card p {
+	text-align: justify;
+	}
+	
+.title {
+	color: grαy;
+	margin-top: 10px;
+	margin-bottom: 15px;
+	}
+	
+/* no empty space between header and hero image */
+#home-anchor {
+	margin-bottom: 0px;
+	}
+	
+/******************** STORE AREA SETTINGS ********************/
+.store-container {
+	display: block;
+}
+.video-container {
+	display: block;
+	width: 100%;
+	height: auto;
+	}
+
+/******************** GALLERY AREA SETTINGS ********************/
+
+.gallery-container {
+	margin: 20px;
+	}
+
+.gallery {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	grid-gap: 20px;
+	align-items: stretch;
+	}
+	
+.gallery-text {
+	margin-bottom: 20px;
+	}
+
+.gallery figure {
+	/*box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);*/
+	/*border: solid rgba(0,0,0,0.1) 1px;           */
+	}
+	
+.gallery img {
+	max-width: 100%;
+	}
+	
+.gallery img:hover {
+	-webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+	filter: grayscale(0%);
+	}
+
+.gallery-photo {
+	display: none;
+	}
+
+/* The "show" class is added to the filtered elements */
+.show {
+	display: block;
+	}
+
+#myBtnContainer {
+
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+/* Style the buttons */
+.btn {
+	font-size: 15px;
+	letter-spacing: 3px;
+	/* to prevent slight movement when a black border
+	is added */
+	border: solid 1px white;
+	outline: none;
+	padding: 12px 18px;
+	background-color: white;
+	cursor: pointer;
+}
+
+/* Add a grey background color on mouse-over */
+.btn:hover {
+
+	}
+
+/* Add a dark background color to the active button */
+.btn.energo {
+	border: solid 1px black;
+}
+	
+/******************** GLOSSARY AREA SETTINGS *******************/	
+
+.glossary-container {	
+	background-color: rgba(0,0,0,0.02);
+}
+
+.read-more-state {
+  display: none;
+}
+
+.read-more-target {
+  opacity: 0;
+  max-height: 0;
+  font-size: 0;
+  transition: .25s ease;
+}
+
+.read-more-state:checked ~ .read-more-wrap .read-more-target {
+  opacity: 1;
+  font-size: inherit;
+  max-height: 999em;
+}
+
+.read-more-state ~ .read-more-trigger:before {
+  content: 'Περισσότερα';
+}
+
+.read-more-state:checked ~ .read-more-trigger:before {
+  content: 'Λιγότερα';
+}
+
+.read-more-trigger {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 .5em;
+  color: #666;
+  font-size: .9em;
+  line-height: 2;
+  border: 1px solid #ddd;
+  border-radius: .25em;
+}
+
+/* Other style */ 
+body {
+  padding: 0%;
+}
+
+.expand-item p {
+  padding: 2%;
+  background: #fff9c6;
+  color: #c7b27e;
+  border: 1px solid #fce29f;
+  border-radius: .25em;
+}
+/******************** CONTACT AREA SETTINGS ********************/
+
+.contact-container {
+	display: grid;
+	grid-template-columns: 1fr;	
+	}
+
+.get-in-touch {
+	display: grid;
+	grid-template-columns: 1fr;
+	}
+	
+.contact-info p {
+	display: flex;
+	justify-content: center;
+	}
+	
+.contact-info img {
+	width: 100%;
+	height: auto;
+	margin-bottom: 30px;
+	}
+	
+.address {
+	font-size: 17px;
+	font-weight: bold;
+	}
+
+#map {
+	height: 400px;
+	width: 100%;
+	margin-top: 30px;
+	}
+
+input[type=text], select, textarea {
+	width: 100%;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	margin-top: 6px;
+	margin-bottom: 16px;
+	resize: vertical;
+	}
+
+input[type=submit] {
+	background-color: black;
+	color: white;
+	padding: 12px 20px;
+	border: none;
+	border-radius: 0px;
+	cursor: pointer;
+	}
+
+input[type=submit]:hover {
+	background-color: gray;
+	}
+
+.mail-form {
+	border-radius: 5px;
+	background-color: #f2f2f2;
+	padding: 20px;
+	}
+/******************** FOOTER AREA SETTINGS ********************/
+.footer-container {
+	text-align: center;
+	margin-top: 20px;
+	}
+/***************************************************************/
+/*                         MEDIA QUERIES                       */
+/***************************************************************/
+
+
+/**************************************** SCREEN SIZE >= 650px */
+@media screen and (min-width: 650px) {
+
+/******************** HEADER AREA SETTINGS *********************/
+
+/* Move down header to allow for fixed menu bar */	
+.header-container {
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	margin-top: 0px;	
+	}
+	
+.logo-name-container {
+	flex-flow: row no wrap;
+	justify-content: right;
+	padding-right: 60px;
+	}
+
+.logo-sign-container {
+	flex-flow: row nowrap;
+	justify-content: left;
+	}
+	
+/******************** HOME AREA SETTINGS ***********************/
+
+
+/******************** GALLERY AREA SETTINGS ********************/		
+
+/* Display Gallery photos with a big margin */
+.gallery-container {
+	margin-right: 15%;
+	margin-left: 15%;
+	}
+}/**********************************End of media query >=650px */
+
+/* SCREEN SIZE >= 900px */
+@media screen and (min-width: 900px) {
+	
+	#go-to-top-btn {
+	font-size: 30px;
+	font-weight: 900;
+	padding-left: 17.5px;
+	padding-bottom: 20px;
+	height: 50px;
+	width: 50px;
+    bottom: 50px; /* Place the button at the bottom of the page */
+    right: 20px; /* Place the button 30px from the right */
+	
+}
+
+/******************** MENU AREA SETTINGS ***********************/
+
+/* Display a horizontal menu bar */
+.menu-items {
+	display: flex;
+	justify-content: center;
+	}
+	
+.menu-item {
+	height: auto;
+	margin-left: 15px;
+	margin-right: 15px;
+	padding-top: 5px;
+	padding-bottom: 0px;	
+	}
+	
+/* logo on the left on big screens */
+#logo-item {
+	padding-left: 10px;
+	margin-top: 0px;
+	-ms-transform: translate(0%, 0);
+	-webkit-transform: translate(0%, 0);
+    transform: translate(0%, 0);
+	filter: opacity(65%);
+	}
+
+/* bigger size on big screens */
+#name {
+	height: 38px;
+	margin-top: 12px;
+	margin-bottom: 0px;
+	margin-right: 10px;
+	}
+
+/*bigger size on big screens */
+#sign {
+	height: 38px;
+	margin-top: 0px;
+	margin-bottom: 8px;
+	}
+
+
+
+.nav-link {
+	/* change back from 'absolute' */
+	position: initial;
+	-ms-transform: translate(-0%, 0);
+	-webkit-transform: translate(-0%, 0);
+	transform: translate(-0%, 0);
+	width: 100%;
+	color: white;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 14px;
+	}
+	
+.nav-link.active {
+	display: block;
+	border-bottom: solid white 2px;
+	}
+	
+	/* also show the inactive links */
+.nav-link:not(.active) {display: block;}
+
+.nav-link:hover {
+	background-color: gray;
+	color: black;
+	}
+	
+/* Hide the sandwich menu icon */	
+#hamburger {
+	display: none;
+	}
+
+/* WORKING ON THIS NOW */
+
+.social-media-icons-2 {
+	display: flex;
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin-top: 150px;
+	z-index: 9999;
+	/*filter: opacity(35%);*/
+	}
+
+.fa {
+	padding: 10px;
+	font-size: 25px;
+	height: 45px;
+	width: 45px;
+	text-align: center;
+	text-decoration: none;
+	margin: 5px 0px;
+	}
+
+.fa:hover {
+    filter: opacity(100%);
+	}
+
+.fa-facebook {
+	background: transparent;
+	color: black;
+	margin-left: 10px;
+	filter: opacity(70%);
+	}
+	
+.fa-facebook:hover {
+	background: #3B5998;
+	color: white;
+	filter: opacity(100%);
+	}
+
+.fa-twitter {
+	background: transparent;
+	color: black;
+	margin-left: 10px;
+	filter: opacity(70%);
+	}
+
+.fa-twitter:hover {
+	background: #1DA1F2;
+	color: white;
+	filter: opacity(100%);
+	}
+	
+.fa-instagram {
+	background: transparent;
+	color: black;
+	margin-left: 10px;
+	filter: opacity(70%);
+	}
+
+.fa-instagram:hover {
+	background:   background: #f09433; 
+	background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+	background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+	background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+	color: white;
+	filter: opacity(100%);
+	}
+	
+/******************** LOGO AREA SETTINGS ***********************/
+			
+.logo-name-container {
+	max-width:600px;
+	}
+
+.logo-sign-container {
+	max-width:160px;
+	}	
+
+/******************** HOME AREA SETTINGS ***********************/
+
+/* Display the "Meet the Team" columns next to each other
+   instead of one over the other on small screens */
+.column {
+	float: left;
+	width: 33.3%;
+	margin-bottom: 16px;
+	padding: 0 8px;
+	}
+
+
+/******************** STORE AREA SETTINGS ***********************/
+.store-container {
+	display: grid;
+	grid-template-columns: 1fr;
+}
+
+.store-row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create four equal columns that sit next to each other */
+.store-column {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.store-column img {
+  margin-top: 8px;
+  vertical-align: middle;
+}
+
+/******************** GALLERY AREA SETTINGS ********************/
+
+
+
+/******************** CONTACT AREA SETTINGS ********************/
+
+/* Use two columns for contact */
+.get-in-touch {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 20px;
+	}	
+}/* End of media query >= 900px */

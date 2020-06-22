@@ -1,4 +1,7 @@
 <?php
+	// the following code needs to change to include validation 
+	// and security checkes
+
 	$first_name = $_POST['first-name'];
 	$last_name = $_POST['last-name'];
 	$client_email = $_POST['email'];

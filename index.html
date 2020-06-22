@@ -644,22 +644,22 @@
 			// 
 			function toggleHamburgerButton() {
 				var x = document.getElementById("menu-items-id");
-					if (x.className === "menu-items") {	<!-- open menu -->
+					if (x.className === "menu-items") {	//open menu
 						x.className += " expanded";
 						
-						<!-- display menu regardless distance from top -->
+						//display menu regardless distance from top
 						document.getElementById("logo-item").style.display = "block";				
 						document.getElementById("logo-item").style.opacity = "1";
 						
-						<!-- without this there is an annoying moving in the menu -->
+						//without this there is an annoying moving in the menu
 						document.getElementById("logo-item").style.transition = "all 0s";
 					}
-					else {								<!-- open menu -->
+					else {								//open menu
 						x.className = "menu-items";
-						<!-- without this there is an annoying moving in the menu -->
+						//without this there is an annoying moving in the menu
 						document.getElementById("logo-item").style.transition = "all 0s";
 						
-						<!-- decide if logo should be displayed after closing menu -->
+						//decide if logo should be displayed after closing menu
 						if (document.body.scrollTop > 133 || document.documentElement.scrollTop > 133) {
 						
 						document.getElementById("logo-item").style.opacity = "1";
@@ -674,19 +674,19 @@
 		
 		<!-- collapse expanded menu when clicking on a link in the menu -->
 		<script>
-			<!-- create a NodeList with all nav-links -->
+			//create a NodeList with all nav-links
 			var navLinks = document.getElementsByClassName("nav-link");
 			
-			<!-- add an event listener to each nav-link -->
+			//add an event listener to each nav-link
 			for(var i = 0, len = navLinks.length; i < len; i++) {
 				navLinks[i].addEventListener("click", collapseMenu);
 			};
 			
-			<!-- the function that collapses the menu -->
+			//the function that collapses the menu
 			function collapseMenu(){
 				document.getElementById("menu-items-id").classList.remove("expanded");
 				
-				<!-- change X to a hamburger when clicking on a link in the menu -->
+				//change X to a hamburger when clicking on a link in the menu
 				document.getElementById("hamburger").classList.toggle("change");
 			};	
 		</script>
@@ -732,10 +732,10 @@
 		<script>
 			function hideOrShowLogo() {
 				
-				<!-- check if menu-items is in expanded state, i.e. if menu is open -->
+				/*check if menu-items is in expanded state, i.e. if menu is open*/
 				var x = document.getElementsByClassName("expanded");
 				
-				<!-- if menu is not open, run the following code: -->
+				//if menu is not open, run the following code:
 				if (x.length == 0) {
 				
 					if (document.body.scrollTop > 133 || document.documentElement.scrollTop > 133) {
@@ -793,7 +793,7 @@
 						}
 						
 					}	
-				}	<!-- if menu is open do nothing, i.e. leave logo in its permanent display state -->	
+				}	/*if menu is open do nothing, i.e. leave logo in its permanent display state */	
 			}
 			
 			window.addEventListener('scroll', hideOrShowLogo);
@@ -814,41 +814,41 @@
 				}
 			}
 
-	// Show filtered elements
-	function w3AddClass(element, name) {
-	  var i, arr1, arr2;
-	  arr1 = element.className.split(" ");
-	  arr2 = name.split(" ");
-	  for (i = 0; i < arr2.length; i++) {
-		if (arr1.indexOf(arr2[i]) == -1) {
-		  element.className += " " + arr2[i];
-		}
-	  }
-	}
+			// Show filtered elements
+			function w3AddClass(element, name) {
+			var i, arr1, arr2;
+			arr1 = element.className.split(" ");
+			arr2 = name.split(" ");
+			for (i = 0; i < arr2.length; i++) {
+				if (arr1.indexOf(arr2[i]) == -1) {
+				element.className += " " + arr2[i];
+				}
+			}
+			}
 
-	// Hide elements that are not selected
-	function w3RemoveClass(element, name) {
-	  var i, arr1, arr2;
-	  arr1 = element.className.split(" ");
-	  arr2 = name.split(" ");
-	  for (i = 0; i < arr2.length; i++) {
-		while (arr1.indexOf(arr2[i]) > -1) {
-		  arr1.splice(arr1.indexOf(arr2[i]), 1); 
-		}
-	  }
-	  element.className = arr1.join(" ");
-	}
+			// Hide elements that are not selected
+			function w3RemoveClass(element, name) {
+			var i, arr1, arr2;
+			arr1 = element.className.split(" ");
+			arr2 = name.split(" ");
+			for (i = 0; i < arr2.length; i++) {
+				while (arr1.indexOf(arr2[i]) > -1) {
+				arr1.splice(arr1.indexOf(arr2[i]), 1); 
+				}
+			}
+			element.className = arr1.join(" ");
+			}
 
-	// Add active class to the current button (highlight it)
-	var btnContainer = document.getElementById("myBtnContainer");
-	var btns = btnContainer.getElementsByClassName("btn");
-	for (var i = 0; i < btns.length; i++) {
-	  btns[i].addEventListener("click", function(){
-		var current = document.getElementsByClassName("energo");
-		current[0].className = current[0].className.replace(" energo", "");
-		this.className += " energo";
-	  });
-	}
+			// Add active class to the current button (highlight it)
+			var btnContainer = document.getElementById("myBtnContainer");
+			var btns = btnContainer.getElementsByClassName("btn");
+			for (var i = 0; i < btns.length; i++) {
+			btns[i].addEventListener("click", function(){
+				var current = document.getElementsByClassName("energo");
+				current[0].className = current[0].className.replace(" energo", "");
+				this.className += " energo";
+			});
+			}
 		</script>
 		
 		<script>

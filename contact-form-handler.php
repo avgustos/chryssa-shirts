@@ -1,6 +1,9 @@
 <?php
 	// the following code needs to change to include validation 
-	// and security checkes
+	// and security checks
+	// https://www.w3schools.com/php/php_forms.asp
+	// https://www.w3schools.com/php/php_form_validation.asp
+	// https://www.youtube.com/watch?v=1CkBsGhux9U
 
 	$first_name = $_POST['first-name'];
 	$last_name = $_POST['last-name'];
